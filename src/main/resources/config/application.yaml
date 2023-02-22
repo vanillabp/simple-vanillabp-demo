@@ -1,3 +1,21 @@
+logging:
+  level:
+    io.vanillabp: DEBUG
+
 spring:
   application:
     name: Demo
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:h2:file:./demodb.h2;DB_CLOSE_ON_EXIT=FALSE
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+  h2:
+    console:
+      enabled: true
+      path: /h2
+
+vanillabp:
+  default-adapter: camunda8

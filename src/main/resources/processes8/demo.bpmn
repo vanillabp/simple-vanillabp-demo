@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0cdlb7i" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.4.1" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.1.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0cdlb7i" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.7.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.1.0">
   <bpmn:process id="DemoWorkflow" name="Demo Workflow" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1" name="demo wanted">
       <bpmn:outgoing>Flow_1t8k59a</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_1t8k59a" sourceRef="StartEvent_1" targetRef="Activity_1ruuvs6" />
-    <bpmn:serviceTask id="Activity_1ruuvs6" name="Process task">
-      <bpmn:extensionElements>
-        <zeebe:taskDefinition type="processTask" />
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1t8k59a</bpmn:incoming>
-      <bpmn:outgoing>Flow_0vts8zx</bpmn:outgoing>
-    </bpmn:serviceTask>
     <bpmn:exclusiveGateway id="Gateway_0h0x1bz" name="success?" default="Flow_0yfne47">
       <bpmn:incoming>Flow_0vts8zx</bpmn:incoming>
       <bpmn:outgoing>Flow_0yfne47</bpmn:outgoing>
@@ -36,6 +29,13 @@
       <bpmn:incoming>Flow_0nt73eg</bpmn:incoming>
       <bpmn:outgoing>Flow_058jwp2</bpmn:outgoing>
     </bpmn:serviceTask>
+    <bpmn:userTask id="Activity_1ruuvs6" name="Process task">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="processTask" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1t8k59a</bpmn:incoming>
+      <bpmn:outgoing>Flow_0vts8zx</bpmn:outgoing>
+    </bpmn:userTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="DemoWorkflow">
@@ -44,9 +44,6 @@
         <bpmndi:BPMNLabel>
           <dc:Bounds x="164" y="152" width="67" height="14" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0vneqke_di" bpmnElement="Activity_1ruuvs6">
-        <dc:Bounds x="270" y="87" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0h0x1bz_di" bpmnElement="Gateway_0h0x1bz" isMarkerVisible="true">
         <dc:Bounds x="425" y="102" width="50" height="50" />
@@ -69,6 +66,9 @@
       <bpmndi:BPMNShape id="Activity_0f1htf1_di" bpmnElement="Activity_0ljjakt">
         <dc:Bounds x="490" y="200" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0aodqkb_di" bpmnElement="Activity_1ruuvs6">
+        <dc:Bounds x="270" y="87" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1t8k59a_di" bpmnElement="Flow_1t8k59a">
         <di:waypoint x="215" y="127" />

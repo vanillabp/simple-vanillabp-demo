@@ -5,5 +5,7 @@ zeebe:
       security:
           plaintext: true
 
-demo:
-  processes-location: processes8
+vanillabp:
+  adapters:
+    camunda8:
+      resources-path: processes8

@@ -19,6 +19,8 @@ camunda:
          schema-update: true
          jdbc-batch-processing: false
       auto-deployment-enabled: false
-      
-demo:
-  processes-location: processes7
+
+vanillabp:
+  adapters:
+    camunda7:
+      resources-path: processes7
