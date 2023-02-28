@@ -32,6 +32,14 @@ public class DemoRestController {
         
     }
 
+    @GetMapping("/request-demo/{id}")
+    public void requestDemoWorkflow(
+            @PathVariable("id") final String id) throws Exception {
+        
+        demoWorkflow.requestDemo(id);
+        
+    }
+
     @GetMapping("/demo/{id}")
     public void runDemoWorkflow(
             @PathVariable("id") final String id) throws Exception {
@@ -39,5 +47,18 @@ public class DemoRestController {
         demoWorkflow.startDemo(id);
         
     }
-    
+
+    @GetMapping("/continue-demo/{id}")
+    public void continueDemoWorkflow(
+            @PathVariable("id") final String id) throws Exception {
+
+        final var demoAggregate = demoAggregates.findById(id);
+        if (demoAggregate.isEmpty()) {
+            throw new RuntimeException("Not found");
+        }
+
+        demoWorkflow.continueDemo(demoAggregate.get());
+        
+    }
+
 }

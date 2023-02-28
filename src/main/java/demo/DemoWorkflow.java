@@ -22,9 +22,27 @@ public class DemoWorkflow {
         
         var demo = new DemoAggregate();
         demo.setId(id);
-        processService.startWorkflow(demo);
+        demo = processService.startWorkflow(demo);
 
         logger.info("Run: {}", demo.getId());
+
+    }
+    
+    public void requestDemo(final String id) throws Exception {
+        
+        var demo = new DemoAggregate();
+        demo.setId(id);
+        demo = processService.correlateMessage(demo, "Start");
+
+        logger.info("Run: {}", demo.getId());
+
+    }
+    
+    public void continueDemo(final DemoAggregate demo) throws Exception {
+        
+        processService.correlateMessage(demo, "Continue");
+
+        logger.info("Continue: {}", demo.getId());
 
     }
     

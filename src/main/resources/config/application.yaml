@@ -18,4 +18,6 @@ spring:
       path: /h2
 
 vanillabp:
-  default-adapter: camunda8
+  default-adapter: camunda8,camunda7
+  workflows:
+    - bpmn-process-id: DemoWorkflow
