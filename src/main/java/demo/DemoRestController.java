@@ -1,6 +1,7 @@
 package demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,18 +18,31 @@ public class DemoRestController {
     private DemoAggregateRepository demoAggregates;
 
     @GetMapping("/demo/{id}/process-task-completed/{taskId}")
-    public void runDemoWorkflow(
+    public ResponseEntity<Void> completeUserTask(
             @PathVariable("id") final String id,
             @PathVariable("taskId") final String taskId) throws Exception {
         
         final var demoAggregate = demoAggregates.findById(id);
         if (demoAggregate.isEmpty()) {
-            throw new RuntimeException("Not found");
+            return ResponseEntity.notFound().build();
+        }
+        
+        String convertedTaskId;
+        if (taskId.startsWith("0x")) {
+            convertedTaskId = taskId.substring(2);
+        } else {
+            try {
+                convertedTaskId = Long.toHexString(Long.valueOf(taskId));
+            } catch (Exception e) {
+                convertedTaskId = taskId;
+            }
         }
         
         demoWorkflow.completeUserTask(
                 demoAggregate.get(),
-                taskId);
+                convertedTaskId);
+        
+        return ResponseEntity.ok().build();
         
     }
 
