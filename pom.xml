@@ -80,7 +80,7 @@
         <dependency>
           <groupId>org.camunda.community.vanillabp</groupId>
           <artifactId>camunda7-spring-boot-adapter</artifactId>
-          <version>1.0.6</version>
+          <version>1.0.7</version>
           <!--
           <exclusions>
             <exclusion>
@@ -102,7 +102,7 @@
         <dependency>
           <groupId>org.camunda.community.vanillabp</groupId>
           <artifactId>camunda8-spring-boot-adapter</artifactId>
-          <version>1.0.3</version>
+          <version>1.0.4</version>
         </dependency>
       </dependencies>
     </profile>
