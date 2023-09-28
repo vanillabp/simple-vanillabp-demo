@@ -18,8 +18,10 @@ To run the demo using Camunda Platform 7 use these commands:
 
 ```sh
 mvn clean package -Pcamunda7
-java -Dspring.profiles.active=camunda7 -jar target/demo-0.0.1-SNAPSHOT.jar
+java -DworkerId=test -Dspring.profiles.active=camunda7 -jar target/demo-0.0.1-SNAPSHOT.jar
 ```
+
+*`workerId` system-property:* For details see https://github.com/vanillabp/spring-boot-support#worker-id.
 
 ### Using Camunda Platform 8
 
@@ -29,8 +31,10 @@ Afterward use these commands:
 
 ```sh
 mvn clean package -Pcamunda8
-java -Dspring.profiles.active=camunda8 -jar target/demo-0.0.1-SNAPSHOT.jar
+java -DworkerId=test -Dspring.profiles.active=camunda8 -jar target/demo-0.0.1-SNAPSHOT.jar
 ```
+
+*`workerId` system-property:* For details see https://github.com/vanillabp/spring-boot-support#worker-id.
 
 ### Migrating from Camunda Platform 7 to Camunda Platform 8
 
@@ -40,7 +44,7 @@ Afterward use these commands:
 
 ```sh
 mvn clean package -Pcamunda8,camunda7
-java -Dvanillabp.default-adapter=XXXX -Dspring.profiles.active=camunda8,camunda7 -jar target/demo-0.0.1-SNAPSHOT.jar
+java -DworkerId=test -Dvanillabp.default-adapter=XXXX -Dspring.profiles.active=camunda8,camunda7 -jar target/demo-0.0.1-SNAPSHOT.jar
 ```
 
 The placeholder `XXXX` for the default-adapter has to be set according to the phase of migration:
