@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-for-demo-aggregate
+      author: stephanpelikan
+      changes:
+        - createTable:
+            tableName: DEMO
+            columns:
+              - column:
+                  name: ID
+                  type: varchar(40)
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: SUCCESS
+                  type: boolean
+                  constraints:
+                    nullable: false

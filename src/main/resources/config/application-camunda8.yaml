@@ -1,9 +1,21 @@
+logging:
+  level:
+    io.camunda.zeebe.client.impl.ZeebeCallCredentials: ERROR
+
 zeebe:
-   client:
-      broker:
-          gateway-address: 127.0.0.1:26500
-      security:
-          plaintext: true
+  client:
+    broker:
+      gateway-address: 127.0.0.1:26500
+    security:
+       plaintext: true
+
+common:
+  enabled: true
+  keycloak:
+    url: http://localhost:18080
+    realm: camunda-platform
+  client-id: zeebe
+  client-secret: zecret
 
 vanillabp:
   adapters:
