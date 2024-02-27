@@ -1,3 +1,7 @@
+spring:
+   liquibase:
+      enabled: false
+
 camunda:
    bpm:
       filter:
@@ -21,6 +25,8 @@ camunda:
       auto-deployment-enabled: false
 
 vanillabp:
-  adapters:
-    camunda7:
-      resources-path: processes7
+   workflow-modules:
+      Demo:
+         adapters:
+            camunda7:
+               resources-location: classpath*:/processes7

@@ -18,6 +18,8 @@ common:
   client-secret: zecret
 
 vanillabp:
-  adapters:
-    camunda8:
-      resources-path: processes8
+  workflow-modules:
+    Demo:
+      adapters:
+        camunda8:
+          resources-location: classpath*:/processes8
