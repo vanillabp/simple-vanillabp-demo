@@ -27,14 +27,12 @@ public class DemoRestController {
             return ResponseEntity.notFound().build();
         }
         
-        String convertedTaskId;
-        if (taskId.startsWith("0x")) {
-            convertedTaskId = taskId.substring(2);
-        } else {
+        String convertedTaskId = taskId;
+        if (convertedTaskId.startsWith("0x")) {
             try {
-                convertedTaskId = Long.toHexString(Long.valueOf(taskId));
+                convertedTaskId = Long.toString(Long.parseLong(convertedTaskId.substring(2), 16));
             } catch (Exception e) {
-                convertedTaskId = taskId;
+                throw new RuntimeException("Malformed HEX task id: " + taskId, e);
             }
         }
         
