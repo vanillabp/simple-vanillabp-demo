@@ -1,6 +1,0 @@
-databaseChangeLog:
-  - include:
-      file: classpath:/io/vanillabp/camunda8/liquibase/main.yaml
-  - include:
-      file: demo-aggregate.yaml
-      relativeToChangelogFile: true

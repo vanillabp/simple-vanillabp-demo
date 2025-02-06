@@ -1,7 +1,3 @@
-spring:
-   liquibase:
-      enabled: false
-
 camunda:
    bpm:
       filter:
@@ -11,9 +7,10 @@ camunda:
          password: admin
          first-name: Admin
          last-name: Istrator
-      generic-properties.properties:
-         initializeTelemetry: false
-         telemetry-reporter-activate: false
+      # telemetry is deprecated since 7.22.0
+      #generic-properties.properties:
+      #   initializeTelemetry: false
+      #   telemetry-reporter-activate: false
       job-execution:
          core-pool-size: 1
          max-pool-size: 1

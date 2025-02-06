@@ -2,20 +2,34 @@ logging:
   level:
     io.camunda.zeebe.client.impl.ZeebeCallCredentials: ERROR
 
-zeebe:
-  client:
-    broker:
-      gateway-address: 127.0.0.1:26500
-    security:
-       plaintext: true
+spring:
+  liquibase:
+    camunda8:
+      change-log: classpath:/io/vanillabp/camunda8/liquibase/main.yaml
+      database-change-log-table: c8_changelog
+      database-change-log-lock-table: c8_changeloglock
 
-common:
-  enabled: true
-  keycloak:
-    url: http://localhost:18080
-    realm: camunda-platform
-  client-id: zeebe
-  client-secret: zecret
+camunda:
+  client:
+    mode: oidc
+    auth:
+      oidc-type: keycloak
+      issuer: http://localhost:18080/auth/realms/camunda-platform
+      client-id: zeebe
+      client-secret: zecret
+    zeebe:
+      enabled: true
+      gateway-url: http://localhost:26500
+      defaults:
+        enabled: false
+    operate:
+      enabled: false
+    tasklist:
+      enabled: false
+    optimize:
+      enabled: false
+    identity:
+      enabled: false
 
 vanillabp:
   workflow-modules:
@@ -23,3 +37,4 @@ vanillabp:
       adapters:
         camunda8:
           resources-location: classpath*:/processes8
+          use-tenants: false

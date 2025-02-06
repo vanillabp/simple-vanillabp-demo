@@ -1,9 +1,11 @@
 logging:
   level:
-    io.vanillabp: DEBUG
+    io.vanillabp: TRACE
+  pattern:
+    level: "%mdc %5p"
 
 server:
-  port: 8088
+  port: 8080
 
 spring:
   application:
@@ -14,13 +16,17 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
   liquibase:
-    change-log: classpath:db/changelog/db.changelog-master.yaml
-    enabled: true
+    demo:
+      change-log: classpath:liquibase/demo.yaml
+      database-change-log-table: demo_changelog
+      database-change-log-lock-table: demo_changeloglock
   h2:
     console:
       enabled: true
       path: /h2
+    parameters:
+      h2.long: BIGINT
 
-workerId: test
+workerId: demo
