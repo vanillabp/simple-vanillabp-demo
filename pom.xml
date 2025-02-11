@@ -119,7 +119,7 @@
                 <dependency>
                     <groupId>org.camunda.community.vanillabp</groupId>
                     <artifactId>camunda8-spring-boot-adapter</artifactId>
-                    <version>1.4.3-SNAPSHOT</version>
+                    <version>1.5.0</version>
                 </dependency>
             </dependencies>
         </profile>
